@@ -12,18 +12,24 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-}
+allprojects {
+    apply(plugin = "java")
+    apply(plugin = "com.diffplug.spotless")
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
+    repositories {
+        mavenCentral()
+    }
 
-tasks.test {
-    useJUnitPlatform()
+    dependencies {
+        testImplementation(platform("org.junit:junit-bom:5.10.0"))
+        testImplementation("org.junit.jupiter:junit-jupiter")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    }
+
+    tasks.test {
+        useJUnitPlatform()
+        include("**/*Test.java*", "**/*Should.java*", "**/*Feature.java*")
+    }
 }
 
 spotless {

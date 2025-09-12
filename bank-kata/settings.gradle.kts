@@ -1,5 +1,7 @@
 rootProject.name = "bank-kata"
 
+include(":solution")
+
 pluginManagement {
     val spotless_version: String by settings
     plugins {
