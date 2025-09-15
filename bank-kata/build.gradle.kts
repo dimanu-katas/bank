@@ -30,7 +30,7 @@ allprojects {
 
     tasks.test {
         useJUnitPlatform()
-        include("**/*Test.java*", "**/*Should.java*", "**/*Feature*")
+        include("**/*Test*", "**/*Should*", "**/*Feature*")
     }
 }
 
