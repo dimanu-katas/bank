@@ -9,7 +9,8 @@ public class Account {
     }
 
     public void deposit(int amount){
-        throw new UnsupportedOperationException("Not implemented yet");
+        Transaction depositTransaction = new Transaction(amount);
+        transactionRepository.addDeposit(depositTransaction);
     }
 
     public void withdraw(int amount){
