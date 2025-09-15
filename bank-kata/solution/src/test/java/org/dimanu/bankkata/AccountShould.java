@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -44,6 +45,7 @@ class AccountShould {
     @Test
     void record_a_deposit_transaction_with_date() {
         Transaction transaction = new Transaction(ANY_AMOUNT, ANY_DATE);
+        given(clock.todayAsString()).willReturn(ANY_DATE);
 
         account.deposit(ANY_AMOUNT);
 
