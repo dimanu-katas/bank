@@ -14,7 +14,8 @@ public class Account {
     }
 
     public void withdraw(int amount){
-        throw new UnsupportedOperationException("Not implemented yet");
+        Transaction withdrawalTransaction = new Transaction(-amount);
+        transactionRepository.addWithdrawal(withdrawalTransaction);
     }
 
     public void printStatement(){
