@@ -15,7 +15,7 @@ class AccountShould {
     @Test
     void record_a_deposit_transaction() {
         Transaction transaction = new Transaction();
-        Account account = new Account();
+        Account account = new Account(transactionRepository);
 
         account.deposit(1000);
 
