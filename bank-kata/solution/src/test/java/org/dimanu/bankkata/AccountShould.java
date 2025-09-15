@@ -14,10 +14,11 @@ class AccountShould {
 
     @Test
     void record_a_deposit_transaction() {
-        Transaction transaction = new Transaction();
+        int amount = 1000;
+        Transaction transaction = new Transaction(amount);
         Account account = new Account(transactionRepository);
 
-        account.deposit(1000);
+        account.deposit(amount);
 
         verify(transactionRepository).addDeposit(transaction);
     }
