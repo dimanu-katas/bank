@@ -18,7 +18,7 @@ class StatementPrinterShould {
 
     @BeforeEach
     void setUp() {
-        statementPrinter = new StatementPrinter();
+        statementPrinter = new StatementPrinter(console);
     }
 
     @Test

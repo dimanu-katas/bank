@@ -12,10 +12,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class PrintStatementFeature {
 
-    @Mock
-    Console console;
-    @Mock
-    Clock clock;
+    @Mock Console console;
+    @Mock Clock clock;
+
     private Account account;
     private TransactionRepository transactionRepository;
     private StatementPrinter statementPrinter;
@@ -23,7 +22,7 @@ class PrintStatementFeature {
     @BeforeEach
     void setup() {
         transactionRepository = new TransactionRepository();
-        statementPrinter = new StatementPrinter();
+        statementPrinter = new StatementPrinter(console);
         account = new Account(transactionRepository, clock, statementPrinter);
     }
 
