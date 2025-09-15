@@ -6,6 +6,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
@@ -17,11 +21,12 @@ class AccountShould {
 
     @Mock TransactionRepository transactionRepository;
     @Mock Clock clock;
+    @Mock StatementPrinter statementPrinter;
     private Account account;
 
     @BeforeEach
     void setUp() {
-        account = new Account(transactionRepository, clock);
+        account = new Account(transactionRepository, clock, statementPrinter);
     }
 
     @Test
@@ -40,5 +45,18 @@ class AccountShould {
         account.withdraw(ANY_AMOUNT);
 
         verify(transactionRepository).store(TransactionMother.withdrawal(ANY_AMOUNT, ANY_DATE));
+    }
+
+    @Test
+    void print_a_statement() {
+        List<Transaction> transactions = Arrays.asList(
+                TransactionMother.any(),
+                TransactionMother.any()
+        );
+        given(transactionRepository.getAllTransactions()).willReturn(transactions);
+
+        account.printStatement();
+
+        verify(statementPrinter).print(transactions);
     }
 }
