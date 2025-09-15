@@ -2,6 +2,7 @@ package feature;
 
 import org.dimanu.bankkata.Account;
 import org.dimanu.bankkata.Console;
+import org.dimanu.bankkata.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,10 +17,12 @@ class PrintStatementFeature {
     @Mock
     Console console;
     private Account account;
+    private TransactionRepository transactionRepository;
 
     @BeforeEach
     void setup() {
-        account = new Account();
+        transactionRepository = new TransactionRepository();
+        account = new Account(transactionRepository);
     }
 
     @Test
