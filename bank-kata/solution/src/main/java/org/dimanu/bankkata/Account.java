@@ -3,9 +3,11 @@ package org.dimanu.bankkata;
 public class Account {
 
     private final TransactionRepository transactionRepository;
+    private final Clock clock;
 
-    public Account(TransactionRepository transactionRepository) {
+    public Account(TransactionRepository transactionRepository, Clock clock) {
         this.transactionRepository = transactionRepository;
+        this.clock = clock;
     }
 
     public void deposit(int amount){

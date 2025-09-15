@@ -1,6 +1,7 @@
 package feature;
 
 import org.dimanu.bankkata.Account;
+import org.dimanu.bankkata.Clock;
 import org.dimanu.bankkata.Console;
 import org.dimanu.bankkata.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,13 +17,15 @@ class PrintStatementFeature {
 
     @Mock
     Console console;
+    @Mock
+    Clock clock;
     private Account account;
     private TransactionRepository transactionRepository;
 
     @BeforeEach
     void setup() {
         transactionRepository = new TransactionRepository();
-        account = new Account(transactionRepository);
+        account = new Account(transactionRepository, clock);
     }
 
     @Test

@@ -15,11 +15,12 @@ class AccountShould {
     private final String ANY_DATE = "10/01/2025";
 
     @Mock TransactionRepository transactionRepository;
+    @Mock Clock clock;
     private Account account;
 
     @BeforeEach
     void setUp() {
-        account = new Account(transactionRepository);
+        account = new Account(transactionRepository, clock);
     }
 
     @Test
