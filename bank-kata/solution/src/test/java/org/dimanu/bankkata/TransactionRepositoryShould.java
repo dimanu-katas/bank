@@ -18,7 +18,7 @@ class TransactionRepositoryShould {
 
     @Test
     void store_and_retrieve_transaction() {
-        Transaction transaction = new Transaction(1000, "10/01/2025");
+        Transaction transaction = TransactionMother.any();
 
         transactionRepository.store(transaction);
         List<Transaction> storedTransactions = transactionRepository.getAllTransactions();

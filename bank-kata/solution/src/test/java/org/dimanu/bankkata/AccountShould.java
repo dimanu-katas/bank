@@ -14,8 +14,6 @@ class AccountShould {
 
     private final int ANY_AMOUNT = 1000;
     private final String ANY_DATE = "10/01/2025";
-    private final Transaction DEPOSIT = new Transaction(ANY_AMOUNT, ANY_DATE);
-    private final Transaction WITHDRAWAL = new Transaction(-ANY_AMOUNT, ANY_DATE);
 
     @Mock TransactionRepository transactionRepository;
     @Mock Clock clock;
@@ -32,7 +30,7 @@ class AccountShould {
 
         account.deposit(ANY_AMOUNT);
 
-        verify(transactionRepository).store(DEPOSIT);
+        verify(transactionRepository).store(TransactionMother.deposit(ANY_AMOUNT, ANY_DATE));
     }
 
     @Test
@@ -41,6 +39,6 @@ class AccountShould {
 
         account.withdraw(ANY_AMOUNT);
 
-        verify(transactionRepository).store(WITHDRAWAL);
+        verify(transactionRepository).store(TransactionMother.withdrawal(ANY_AMOUNT, ANY_DATE));
     }
 }
