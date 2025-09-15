@@ -21,7 +21,7 @@ public class Account {
     }
 
     public void printStatement(){
-        throw new UnsupportedOperationException("Not implemented yet");
+        statementPrinter.print(transactionRepository.getAllTransactions());
     }
 
     private void recordTransaction(int amount) {
