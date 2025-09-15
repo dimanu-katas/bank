@@ -27,20 +27,20 @@ class AccountShould {
     }
 
     @Test
-    void record_a_deposit_transaction() {
+    void store_a_deposit_transaction() {
         given(clock.todayAsString()).willReturn(ANY_DATE);
 
         account.deposit(ANY_AMOUNT);
 
-        verify(transactionRepository).record(DEPOSIT);
+        verify(transactionRepository).store(DEPOSIT);
     }
 
     @Test
-    void record_a_withdrawal_transaction() {
+    void store_a_withdrawal_transaction() {
         given(clock.todayAsString()).willReturn(ANY_DATE);
 
         account.withdraw(ANY_AMOUNT);
 
-        verify(transactionRepository).record(WITHDRAWAL);
+        verify(transactionRepository).store(WITHDRAWAL);
     }
 }

@@ -17,12 +17,12 @@ class TransactionRepositoryShould {
     }
 
     @Test
-    void record_and_retrieve_transaction() {
+    void store_and_retrieve_transaction() {
         Transaction transaction = new Transaction(1000, "10/01/2025");
 
-        transactionRepository.record(transaction);
-        List<Transaction> recorded_transactions = transactionRepository.getAllTransactions();
+        transactionRepository.store(transaction);
+        List<Transaction> storedTransactions = transactionRepository.getAllTransactions();
 
-        assertThat(recorded_transactions).containsExactly(transaction);
+        assertThat(storedTransactions).containsExactly(transaction);
     }
 }

@@ -25,7 +25,7 @@ public class Account {
     private void recordTransaction(int amount) {
         String today = clock.todayAsString();
         Transaction transaction = new Transaction(amount, today);
-        transactionRepository.record(transaction);
+        transactionRepository.store(transaction);
     }
 
 }

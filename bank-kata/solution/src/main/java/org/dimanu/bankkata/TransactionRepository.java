@@ -8,7 +8,7 @@ public class TransactionRepository {
 
     private final List<Transaction> transactions = new ArrayList<>();
 
-    public void record(Transaction transaction) {
+    public void store(Transaction transaction) {
         transactions.add(transaction);
     }
 
