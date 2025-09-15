@@ -1,9 +1,23 @@
 package org.dimanu.bankkata;
 
+import java.util.Objects;
+
 public class Transaction {
     private final int amount;
 
     public Transaction(int amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return amount == that.amount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(amount);
     }
 }
