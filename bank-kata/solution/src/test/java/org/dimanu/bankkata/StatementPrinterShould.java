@@ -15,6 +15,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class StatementPrinterShould {
     private final List<Transaction> NO_TRANSACTIONS = Collections.emptyList();
+    private final String HEADER = "DATE | AMOUNT | BALANCE";
 
     @Mock Console console;
     private StatementPrinter statementPrinter;
@@ -28,6 +29,6 @@ class StatementPrinterShould {
     void only_print_header_when_no_transactions() {
         statementPrinter.print(NO_TRANSACTIONS);
 
-        verify(console).printLine("DATE | AMOUNT | BALANCE");
+        verify(console).printLine(HEADER);
     }
 }
