@@ -1,5 +1,6 @@
 package org.dimanu.bankkata;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -10,15 +11,21 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class AccountShould {
 
+    private final int ANY_AMOUNT = 1000;
+
     @Mock TransactionRepository transactionRepository;
+    private Account account;
+
+    @BeforeEach
+    void setUp() {
+        account = new Account(transactionRepository);
+    }
 
     @Test
     void record_a_deposit_transaction() {
-        int amount = 1000;
-        Transaction transaction = new Transaction(amount);
-        Account account = new Account(transactionRepository);
+        Transaction transaction = new Transaction(ANY_AMOUNT);
 
-        account.deposit(amount);
+        account.deposit(ANY_AMOUNT);
 
         verify(transactionRepository).addDeposit(transaction);
     }
