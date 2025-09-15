@@ -23,7 +23,8 @@ public class Account {
     }
 
     private void recordTransaction(int amount) {
-        Transaction transaction = new Transaction(amount);
+        String today = clock.todayAsString();
+        Transaction transaction = new Transaction(amount, today);
         transactionRepository.record(transaction);
     }
 
