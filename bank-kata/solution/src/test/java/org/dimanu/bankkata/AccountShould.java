@@ -12,6 +12,7 @@ import static org.mockito.Mockito.verify;
 class AccountShould {
 
     private final int ANY_AMOUNT = 1000;
+    private final String ANY_DATE = "10/01/2025";
 
     @Mock TransactionRepository transactionRepository;
     private Account account;
@@ -35,6 +36,15 @@ class AccountShould {
         Transaction transaction = new Transaction(-ANY_AMOUNT);
 
         account.withdraw(ANY_AMOUNT);
+
+        verify(transactionRepository).record(transaction);
+    }
+
+    @Test
+    void record_a_deposit_transaction_with_date() {
+        Transaction transaction = new Transaction(ANY_AMOUNT, ANY_DATE);
+
+        account.deposit(ANY_AMOUNT);
 
         verify(transactionRepository).record(transaction);
     }
