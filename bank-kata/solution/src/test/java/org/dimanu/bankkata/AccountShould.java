@@ -26,7 +26,8 @@ class AccountShould {
 
     @Test
     void record_a_deposit_transaction() {
-        Transaction transaction = new Transaction(ANY_AMOUNT);
+        Transaction transaction = new Transaction(ANY_AMOUNT, ANY_DATE);
+        given(clock.todayAsString()).willReturn(ANY_DATE);
 
         account.deposit(ANY_AMOUNT);
 
@@ -35,19 +36,10 @@ class AccountShould {
 
     @Test
     void record_a_withdrawal_transaction() {
-        Transaction transaction = new Transaction(-ANY_AMOUNT);
-
-        account.withdraw(ANY_AMOUNT);
-
-        verify(transactionRepository).record(transaction);
-    }
-
-    @Test
-    void record_a_deposit_transaction_with_date() {
-        Transaction transaction = new Transaction(ANY_AMOUNT, ANY_DATE);
+        Transaction transaction = new Transaction(-ANY_AMOUNT, ANY_DATE);
         given(clock.todayAsString()).willReturn(ANY_DATE);
 
-        account.deposit(ANY_AMOUNT);
+        account.withdraw(ANY_AMOUNT);
 
         verify(transactionRepository).record(transaction);
     }
