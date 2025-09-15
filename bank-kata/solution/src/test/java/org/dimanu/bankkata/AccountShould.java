@@ -29,4 +29,13 @@ class AccountShould {
 
         verify(transactionRepository).addDeposit(transaction);
     }
+
+    @Test
+    void record_a_withdrawal_transaction() {
+        Transaction transaction = new Transaction(-ANY_AMOUNT);
+
+        account.withdraw(ANY_AMOUNT);
+
+        verify(transactionRepository).addWithdrawal(transaction);
+    }
 }
