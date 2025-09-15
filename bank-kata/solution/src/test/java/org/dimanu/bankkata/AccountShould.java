@@ -27,7 +27,7 @@ class AccountShould {
 
         account.deposit(ANY_AMOUNT);
 
-        verify(transactionRepository).addDeposit(transaction);
+        verify(transactionRepository).record(transaction);
     }
 
     @Test
@@ -36,6 +36,6 @@ class AccountShould {
 
         account.withdraw(ANY_AMOUNT);
 
-        verify(transactionRepository).addWithdrawal(transaction);
+        verify(transactionRepository).record(transaction);
     }
 }

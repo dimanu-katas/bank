@@ -10,12 +10,12 @@ public class Account {
 
     public void deposit(int amount){
         Transaction depositTransaction = new Transaction(amount);
-        transactionRepository.addDeposit(depositTransaction);
+        transactionRepository.record(depositTransaction);
     }
 
     public void withdraw(int amount){
         Transaction withdrawalTransaction = new Transaction(-amount);
-        transactionRepository.addWithdrawal(withdrawalTransaction);
+        transactionRepository.record(withdrawalTransaction);
     }
 
     public void printStatement(){
