@@ -3,6 +3,8 @@ package org.dimanu.bankkata;
 import java.util.List;
 
 public class StatementPrinter {
+    public static final String HEADER = "DATE | AMOUNT | BALANCE";
+
     private Console console;
 
     public StatementPrinter(Console console) {
@@ -10,6 +12,6 @@ public class StatementPrinter {
     }
 
     public void print(List<Transaction> transactions) {
-        throw  new UnsupportedOperationException("Not supported yet.");
+        console.printLine(HEADER);
     }
 }
