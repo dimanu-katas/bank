@@ -9,16 +9,20 @@ public class Account {
     }
 
     public void deposit(int amount){
-        Transaction depositTransaction = new Transaction(amount);
-        transactionRepository.record(depositTransaction);
+        recordTransaction(amount);
     }
 
     public void withdraw(int amount){
-        Transaction withdrawalTransaction = new Transaction(-amount);
-        transactionRepository.record(withdrawalTransaction);
+        recordTransaction(-amount);
     }
 
     public void printStatement(){
         throw new UnsupportedOperationException("Not implemented yet");
     }
+
+    private void recordTransaction(int amount) {
+        Transaction transaction = new Transaction(amount);
+        transactionRepository.record(transaction);
+    }
+
 }
