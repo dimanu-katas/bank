@@ -1,14 +1,27 @@
 package org.dimanu.bankkata;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class Transaction {
     private final int amount;
     private final String date;
 
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.00");
+
     public Transaction(int amount, String date) {
         this.amount = amount;
         this.date = date;
+    }
+
+    public void printTo(Console console) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(date);
+        builder.append(" | ");
+        builder.append(decimalFormat.format(amount));
+        builder.append(" | ");
+        builder.append(decimalFormat.format(amount));
+        console.printLine(builder.toString());
     }
 
     @Override

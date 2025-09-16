@@ -13,5 +13,8 @@ public class StatementPrinter {
 
     public void print(List<Transaction> transactions) {
         console.printLine(HEADER);
+        for (Transaction transaction : transactions) {
+            transaction.printTo(console);
+        }
     }
 }
