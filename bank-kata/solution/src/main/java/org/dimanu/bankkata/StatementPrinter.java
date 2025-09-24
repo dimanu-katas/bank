@@ -14,9 +14,21 @@ public class StatementPrinter {
     public void print(List<Transaction> transactions) {
         console.printLine(HEADER);
         List<Transaction> orderedTransactions = orderTransactionsByMostRecentFirst(transactions);
+
+        int runningBalance = calculateFinalBalance(transactions);
+
         for (Transaction transaction : orderedTransactions) {
-            transaction.printTo(console);
+            transaction.printTo(console, runningBalance);
+            runningBalance = transaction.calculatePreviousBalance(runningBalance);
         }
+    }
+
+    private int calculateFinalBalance(List<Transaction> transactions) {
+        int balance = 0;
+        for (Transaction transaction : transactions) {
+            balance = transaction.applyToBalance(balance);
+        }
+        return balance;
     }
 
     private List<Transaction> orderTransactionsByMostRecentFirst(List<Transaction> transactions) {

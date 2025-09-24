@@ -16,14 +16,22 @@ public class Transaction {
         this.date = date;
     }
 
-    public void printTo(Console console) {
+    public void printTo(Console console, int runningBalance) {
         StringBuilder builder = new StringBuilder();
         builder.append(date);
         builder.append(" | ");
         builder.append(decimalFormat.format(amount));
         builder.append(" | ");
-        builder.append(decimalFormat.format(amount));
+        builder.append(decimalFormat.format(runningBalance));
         console.printLine(builder.toString());
+    }
+
+    public int calculatePreviousBalance(int currentBalance) {
+        return currentBalance - amount;
+    }
+
+    public int applyToBalance(int currentBalance) {
+        return currentBalance + amount;
     }
 
     public boolean isMoreRecentThan(Transaction other) {
