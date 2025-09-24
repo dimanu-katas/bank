@@ -1,6 +1,8 @@
 package org.dimanu.bankkata;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Transaction {
@@ -22,6 +24,13 @@ public class Transaction {
         builder.append(" | ");
         builder.append(decimalFormat.format(amount));
         console.printLine(builder.toString());
+    }
+
+    public boolean isMoreRecentThan(Transaction other) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate thisDate = LocalDate.parse(this.date, formatter);
+        LocalDate otherDate = LocalDate.parse(other.date, formatter);
+        return thisDate.isAfter(otherDate);
     }
 
     @Override

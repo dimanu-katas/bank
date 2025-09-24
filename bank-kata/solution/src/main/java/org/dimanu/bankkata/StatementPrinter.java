@@ -13,8 +13,19 @@ public class StatementPrinter {
 
     public void print(List<Transaction> transactions) {
         console.printLine(HEADER);
-        for (Transaction transaction : transactions) {
+        List<Transaction> orderedTransactions = orderTransactionsByMostRecentFirst(transactions);
+        for (Transaction transaction : orderedTransactions) {
             transaction.printTo(console);
         }
+    }
+
+    private List<Transaction> orderTransactionsByMostRecentFirst(List<Transaction> transactions) {
+        return transactions.stream()
+                .sorted(this::compareByDateMostRecentFirst)
+                .toList();
+    }
+
+    private int compareByDateMostRecentFirst(Transaction t1, Transaction t2) {
+        return Boolean.compare(t2.isMoreRecentThan(t1), t1.isMoreRecentThan(t2));
     }
 }
