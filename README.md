@@ -46,4 +46,4 @@ The objetive is to develop the solution applying Outside-In TDD
 
 ## Visit my GitHub profile for more katas 🚀
 
-[![Web](https://img.shields.io/badge/GitHub-Dimanu.py-14a1f0?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://github.com/dimanu-katas/repositories)
+[![Web](https://img.shields.io/badge/GitHub-Dimanu.py-14a1f0?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://github.com/orgs/dimanu-katas/repositories)
